@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zacsis leves Kalkulátor</title>
+    <link rel="icon" type="image/x-icon" href="Windows_Calculator.ico">
+    <link rel="stylesheet" href="kalkulator.css">
+</head>
+<body>
+    <h1>Szia kezdheted a számolást:</h1>
+    <form id="urlap">
+        <label for="zacsidb">Zacsis levesek darabszáma:</label>
+        <input type="number" id="zacsidb" value="230" oninput="szamol()"><br>
+        <label for="zacsiar">Egy 6 db zacsis leves ára:</label>
+        <input type="number" id="zacsiar" value="1920" oninput="szamol()"><br>
+        <label for="havikoltseg">Havi költség:</label>
+        <input type="text" id="havikoltseg" readonly><br>
+        <label for="evikoltseg">Évi költség:</label>
+        <input type="text" id="evikoltseg" readonly><br>
+    </form>
+    <script>
+        function szamol() {
+            let db = parseInt(document.getElementById("zacsidb").value);
+            let zacsiar = parseInt(document.getElementById("zacsiar").value);
+            
+            // Havi és éves költség számítása
+            let havikoltseg = Math.round((db / 230) * zacsiar * 6 * 30); //230 az alapertek
+            let evikoltseg = Math.round(havikoltseg * 12);
+            
+            document.getElementById("havikoltseg").value = `${havikoltseg} Ft`;
+            document.getElementById("evikoltseg").value = `${evikoltseg} Ft`;
+        }
+    </script>
+</body>
+</html>
